@@ -19,32 +19,46 @@ public class CryptoMarche {
     }
 
     /**
-     * Cette fonction recherche sur le marché tous les portefeuilles 
-     * du propriétaire et calcule son capital en euros. 
+     * Cette fonction recherche sur le marchÃ© tous les portefeuilles 
+     * du propriÃ©taire et calcule son capital en euros. 
      * @param proprietare
-     * @return capital en euros du propriétare.
+     * @return capital en euros du propriÃ©tare.
      */
     public double capitalEnEuros(String proprietaire){
-        /**
-			FONCTION À IMPLEMENTER
-        **/
 
-        return 0;
+        double total = 0;
+
+        for ( int i = 0 ; i < portefeuilles.size() ; i++ )
+        {
+            if ( portefeuilles.get(i).estProprietaire(proprietaire) )
+            {
+                total += portefeuilles.get(i).getMontant()*portefeuilles.get(i).getMonnaie().getValeurDeJeton();
+            }
+        }
+
+        return total;
     }
 
     /**
-     * Cette fonction recherche sur le marché tous les portefeuilles 
+     * Cette fonction recherche sur le marchÃ© tous les portefeuilles 
      * d'un type de devise et calcule le volume total de capital de 
-     * cette devise sur le marché 
+     * cette devise sur le marchÃ© 
      * @param monnaie
      * @return capital total en circulation de la cryptomonnaie (en euros).
      */
     public double capitalMonneaie(Cryptomonnaie monnaie){
-        /**
-			FONCTION À IMPLEMENTER
-        **/
 
-        return 0;
+        double total = 0;
+
+        for ( int i = 0 ; i < portefeuilles.size() ; i++ )
+        {
+            if ( portefeuilles.get(i).getMonnaie() == monnaie )
+            {
+                total += portefeuilles.get(i).getMontant()*portefeuilles.get(i).getMonnaie().getValeurDeJeton();;
+            }
+        }
+
+        return total;
 
     }
 
